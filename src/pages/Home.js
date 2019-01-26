@@ -28,16 +28,15 @@ class Home extends Component {
 
     getBooks = () => {
         API.getBooks(this.state.q)
-        .then(res => 
-            this.setState({ books: res.data }))
-            .catch(() => 
-            this.setState({ books: [], message: "No New Books Found, Try Again!"}));
+        .then(res => {
+            console.log(res)
+            this.setState({ books: res.data })           
+        })
+        .catch(err => console.log(err))
     };
 
-    handleFormSubmit = e => {
-        console.log("formsubmit")
-        e.preventDefault();
-        e.stopPropagation()
+    handleFormSubmit = event => {
+        event.preventDefault();
         this.getBooks();
     };
 
