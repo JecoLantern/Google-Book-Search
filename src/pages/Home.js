@@ -9,11 +9,15 @@ import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
 
 class Home extends Component {
-    state = {
-        books: [],
-        q: "",
-        message: "Search For A Book Now!"
-    };
+    constructor(props){
+        super(props)
+        this.state = {
+            books: [],
+            q: "",
+            message: "Search For A Book Now!"
+        };
+
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -30,8 +34,10 @@ class Home extends Component {
             this.setState({ books: [], message: "No New Books Found, Try Again!"}));
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
+    handleFormSubmit = e => {
+        console.log("formsubmit")
+        e.preventDefault();
+        e.stopPropagation()
         this.getBooks();
     };
 
