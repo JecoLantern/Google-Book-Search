@@ -32,7 +32,72 @@ class Home extends Component {
             console.log(res)
             this.setState({ books: res.data })           
         })
-        .catch(err => console.log(err))
+        .then(response => response.json())
+        .then((data) => {
+            data.items.forEach((item, i) => {
+                let element = {};
+                if (typeof item.volumeInfo.title != 'undefined') { 
+                    element.title = item.volumeInfo.title;
+                } else {
+                    element.title = null;
+                }
+                if ( typeof item.volumeInfo.authors != 'undefined') {
+                    element.authors =  item.volumeInfo.authors[0];
+                } else {
+                    element.authors = null;
+                }
+                if ( typeof item.volumeInfo.averageRating != 'undefined') {
+                    element.rating =  item.volumeInfo.averageRating;
+                } else {
+                    element.rating = null;
+                }
+                if ( typeof item.volumeInfo.ratingsCount != 'undefined') {
+                    element.ratingsCount =  item.volumeInfo.ratingsCount;
+                } else {
+                    element.ratingsCount = null;
+                }
+                if ( typeof item.volumeInfo.publisher != 'undefined') {
+                    element.publisher = item.volumeInfo.publisher;
+                } else {
+                    element.publisher = null;
+                }
+                if ( typeof item.volumeInfo.publishedDate != 'undefined') {
+                    element.publishedDate = item.volumeInfo.publishedDate;
+                } else {
+                    element.publishedDate = null;
+                }
+                if ( typeof item.volumeInfo.description != 'undefined') {
+                    element.description = item.volumeInfo.description;
+                } else {
+                    element.description = null;
+                }	
+                if ( typeof item.volumeInfo.imageLinks != 'undefined' &&
+                            typeof item.volumeInfo.imageLinks.thumbnail != 'undefined' ) {
+                    element.thumbnail = item.volumeInfo.imageLinks.thumbnail.replace(/http:/i, 'https:');
+
+                } else {
+                    element.thumbnail = null;
+                }	
+                if ( typeof item.saleInfo.listPrice != 'undefined') {
+                    element.price = item.saleInfo.listPrice.amount;
+                } else {
+                    element.price = null;
+                }	
+                if ( typeof item.saleInfo.buyLink != 'undefined') {
+                    element.purchase = item.saleInfo.buyLink;
+                } else {
+                    element.price = null;
+                }	
+                if ( typeof item.volumeInfo.description != 'undefined') {
+                    element.description = item.volumeInfo.description;
+                } else {
+                    element.description = null;
+                }	
+                this.setState(this.state.items.splice(i, 1, element));
+            })				
+    })
+        .catch(() => 
+        this.setState({ books: [], message: "No New Books Found, Try Again!"}));
     };
 
     handleFormSubmit = event => {

@@ -16,7 +16,6 @@ class Home extends Component {
             q: "",
             message: "Search For A Book Now!"
         };
-
     }
 
     handleInputChange = event => {
