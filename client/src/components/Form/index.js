@@ -20,7 +20,7 @@ function Form({ q, handleInputChange, handleFormSubmit }) {
             </div>
             <div className="pull-right">
                 <button
-                    onClick={handleFormSubmit}
+                    onClick={() => console.log("hey")}
                     type="submit"
                     className="btn btn-lg btn-danger float-right"
                 >Search</button>

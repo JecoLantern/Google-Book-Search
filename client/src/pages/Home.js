@@ -9,11 +9,15 @@ import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
 
 class Home extends Component {
-    state = {
-        books: [],
-        q: "",
-        message: "Search For A Book Now!"
-    };
+    constructor(props){
+        super(props)
+        this.state = {
+            books: [],
+            q: "",
+            message: "Search For A Book Now!"
+        };
+
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -23,17 +27,22 @@ class Home extends Component {
     };
 
     getBooks = () => {
+        console.log("this.betbooks")
         API.getBooks(this.state.q)
-        .then(res => 
-            this.setState({ books: res.data }))
+        .then(res => {
+            console.log(res)
+            this.setState({ books: res.data })
             .catch(() => 
             this.setState({ books: [], message: "No New Books Found, Try Again!"}));
-    };
+        }
+    )};
 
-    handleFormSubmit = event => {
+    handleFormSubmit = (event) => {
         event.preventDefault();
+        console.log("handleformsubmit")
         this.getBooks();
     };
+
 
     handleBookSave = id => {
         const book = this.state.books.find(book => book.id === id);
