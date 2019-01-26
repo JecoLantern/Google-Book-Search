@@ -2,7 +2,7 @@ import React from "react";
 
 function Form({ q, handleInputChange, handleFormSubmit }) {
     return (
-        <form>
+        <form onSubmit={handleFormSubmit}>
             <div className="form-group">
                 <label htmlFor="Query">
                     <strong>Book</strong>
@@ -20,7 +20,7 @@ function Form({ q, handleInputChange, handleFormSubmit }) {
             </div>
             <div className="pull-right">
                 <button
-                    onClick={(e) => handleFormSubmit}
+                    // onClick={(e) => console.log("hey")}
                     type="submit"
                     className="btn btn-lg btn-danger float-right"
                 >Search</button>
