@@ -6,7 +6,8 @@ module.exports = {
         const { query: params } = req;
         axios
             .get("https://www.googleapis.com/books/v1/volumes?", { params })
-            .then(results => 
+            .then(results => {
+                console.log(results)
                 results.data.items.filter(
                     result =>
                         result.volumeInfo.title &&
@@ -16,7 +17,7 @@ module.exports = {
                         result.volumeInfo.imageLinks &&
                         result.volumeInfo.imageLinks.thumbnail
                     )
-                ).then(apiBooks => 
+            }).then(apiBooks => 
                     db.Book.find().then(dbBooks => 
                         apiBooks.filter(apiBook =>
                             dbBooks.every(dbBook => dbBook.google.Id.toString() !== apiBook.id)
