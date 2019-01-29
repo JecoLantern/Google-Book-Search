@@ -10,8 +10,8 @@ router.use("/books", bookRoutes);
 router.use("/google", googleRoutes);
 
 //render html
-// router.use(function(req, res) {
-//     res.sendFile(path.join(__dirname, "../front-end/public/index.html"));
-// });
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../front-end/public/index.html"));
+});
 
 module.exports = router;
