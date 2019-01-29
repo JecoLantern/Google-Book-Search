@@ -28,11 +28,6 @@ class Home extends Component {
     getBooks = () => {
         API.getBooks(this.state.q)
         .then(res => {
-            // console.log(res.data.items[0].volumeInfo.title)
-            console.log(res.data.forEach(result =>
-                result.items
-                .volumeInfo.title
-            ))
             this.setState({ books: res.data.items })           
         })
         .catch(() => 
