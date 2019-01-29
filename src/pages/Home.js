@@ -45,7 +45,7 @@ class Home extends Component {
         const book = this.state.books.find(book => book.id === id);
 
         API.saveBook({
-            googleId: book.data.items.id,
+            googleId: book.id,
             title: book.volumeInfo.title,
             subtitle: book.volumeInfo.subtitle,
             link: book.volumeInfo.infoLink,
@@ -88,7 +88,9 @@ class Home extends Component {
                                             title={book.volumeInfo.title}
                                             subtitle={book.volumeInfo.subtitle}
                                             link={book.volumeInfo.infoLink}
-                                            authors={book.volumeInfo.imageLinks.thumbnail}
+                                            authors={book.volumeInfo.authors.join(", ")}
+                                            description={book.volumeInfo.description}
+                                            image={book.volumeInfo.imageLinks.thumbnail}
                                             Button={() => (
                                                 <button
                                                     onClick={() => this.handleBookSave(book.id)}
