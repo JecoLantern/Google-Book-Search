@@ -1,17 +1,10 @@
 {
-  "name": "Google-Book-Search",
+  "name": "google-book-search",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/JecoLantern/Google-Book-Search.git",
-  "author": "JecoLantern <jbayonke@hotmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "concurrently": "^4.1.0",
-    "express": "^4.16.4",
-    "mongoose": "^5.4.7"
-  },
+  "description": "",
+  "main": "server.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
@@ -19,5 +12,20 @@
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JecoLantern/Google-Book-Search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JecoLantern/Google-Book-Search/issues"
+  },
+  "homepage": "https://github.com/JecoLantern/Google-Book-Search#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.14"
   }
 }
